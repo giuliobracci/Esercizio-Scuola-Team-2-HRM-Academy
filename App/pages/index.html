@@ -5,19 +5,31 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <script defer type="module" src="../scripts/app.js"></script>
     </head>
     <body>
         <header>
             <h1>Students Preview</h1>
         </header>
-
         <main class="list-container">
             <section>
                 <form>
-                    <input type="text" placeholder="name" />
-                    <input type="text" placeholder="surname" />
-                    <input type="text" placeholder="birthday" />
-                    <input type="text" placeholder="class" />
+                    <label for=""
+                        >Name
+                        <input type="text" placeholder="Name..." />
+                    </label>
+                    <label for=""
+                        >Surname
+                        <input type="text" placeholder="Surname..." />
+                    </label>
+                    <label for="birthday"
+                        >Birthday
+                        <input type="date" />
+                    </label>
+                    <label for=""
+                        >Class
+                        <input type="number" placeholder="class" />
+                    </label>
                     <button type="submit">Add Student</button>
                 </form>
             </section>
@@ -26,6 +38,5 @@
             </section>
         </main>
         <footer></footer>
-        <script src="../scripts/class.js"></script>
     </body>
 </html>
