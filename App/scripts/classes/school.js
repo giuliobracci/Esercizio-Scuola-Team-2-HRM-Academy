@@ -16,22 +16,51 @@ class School {
     }
 
     set name(name) {
-        this.#name = name;
+        this.#name = name.trim();
     }
 
     set classes(classes) {
         this.#classes = classes;
     }
 
-    addStudent(student) {
-        this.students.push(student);
+    //Add a schoolClass in the School if it doesn't exist
+    addClass(schoolClass) {
+        if(!this.#classes.find(e =>schoolClass.number === e.number)){
+            this.#classes.push(schoolClass)
+        }else {
+            throw `SchoolClass ${schoolClass.number} already exists in ${this.#name}`;
+        }
     }
 
-    removeStudent(student) {
-        this.students = this.students.filter(e => student.id === e.id);
+    addStudent(schoolClass,student) {
+        for(let classInSchool of this.#classes){
+            if(classInSchool.number === schoolClass) {
+                classInSchool.students.push(student);
+            }
+        }
     }
 
-    getStudent(student) {
-        return this.students.find(e => e.id === student.id);
+    removeStudent(schoolClass,student) {
+        for(let classInSchool of this.#classes){
+            if(classInSchool.number === schoolClass) {
+                console.log("Before remove student")
+                console.log(classInSchool)
+                classInSchool = classInSchool.students.indexOf(e => student.id != e.id);
+                console.log("After remove student")
+                console.log(classInSchool)
+            }
+        }
+    }
+
+    getStudent(schoolClass,student) {
+        let studentToReturn;
+        for(let classInSchool of this.classes){
+            if(classInSchool.number == schoolClass) {
+                studentToReturn = classInSchool.students.find(e => student.id === e.id);
+            }
+        }
+        return studentToReturn;
     }
 }
+
+export { School };
