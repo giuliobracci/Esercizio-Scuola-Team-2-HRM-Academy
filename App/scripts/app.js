@@ -61,11 +61,25 @@ const student4 = new Student("Mirco","Vucinic","2020/02/02",getRandomId());
 newSchool.addStudent(1,student4);
 console.log("Inserendo Mirco")
 console.log(newSchool);
+// console.log("oooooooooooooooooooooooooooooooooooooo");
+// newSchool.addStudent(1,student4);
+// console.log("Inserendo Mirco due volte")
+// console.log(newSchool);
+// console.log("oooooooooooooooooooooooooooooooooooooo");
 console.log("Cercando Mirco");
 console.log(newSchool.getStudent(1,student4));
 newSchool.removeStudent(1,student4);
 console.log("Rimuovendo Mirco");
 console.log(newSchool);
+// console.log("oooooooooooooooooooooooooooooooooooooo");
+// newSchool.removeStudent(1,student4);
+// console.log("Rimuovendo Mirco");
+// console.log(newSchool);
+// console.log("oooooooooooooooooooooooooooooooooooooo");
+// console.log("oooooooooooooooooooooooooooooooooooooo");
+// console.log("Cercando Mirco");
+// console.log(newSchool.getStudent(1,student4));
+// console.log("oooooooooooooooooooooooooooooooooooooo");
 console.log("----------------------------------------");
 let classProva1 = new SchoolClass(2,14);
 let classProva2 = new SchoolClass(2,14);
