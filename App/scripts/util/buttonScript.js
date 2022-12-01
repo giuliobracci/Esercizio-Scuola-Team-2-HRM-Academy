@@ -1,10 +1,10 @@
 function addClass() {
-  document.querySelector(".form-section").classList.toggle("form1");
-  document.querySelector(".form-section-2").classList.remove("form2");
+  document.querySelector(".modal-class").classList.toggle("show-modal");
+  document.querySelector(".modal-student").classList.remove("show-modal");
 }
 function addStudent() {
-  document.querySelector(".form-section-2").classList.toggle("form2");
-  document.querySelector(".form-section").classList.remove("form1");
+  document.querySelector(".modal-student").classList.toggle("show-modal");
+  document.querySelector(".modal-class").classList.remove("show-modal");
 }
 
 export { addClass, addStudent };

@@ -1,49 +1,68 @@
 header {
-  text-align: center;
   padding: 20px;
   background-color: cadetblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10%;
+}
+header .buttonContainer .addClass,
+header .buttonContainer .addStudent {
+  padding: 8px 14px;
+  cursor: pointer;
+  background-color: azure;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+header .buttonContainer .addClass:hover,
+header .buttonContainer .addStudent:hover {
+  cursor: pointer;
+  padding: 10px 16px;
+  margin: -2px;
 }
 
 .form-section {
-  transform: translateY(-400px);
-  transition: transform 0.7s ease-in-out;
+  width: 100%;
 }
-.form-section .form {
+.form-section .form,
+.form-section .form1 {
+  width: 100%;
   display: flex;
   height: 100%;
   align-items: center;
   justify-content: space-evenly;
   background-color: aquamarine;
   padding: 20px;
+  flex-direction: column;
+  gap: 10px;
 }
-.form-section .form label {
+.form-section .form label,
+.form-section .form1 label {
   font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-.form-section .form label input {
+.form-section .form label input,
+.form-section .form1 label input {
   border-radius: 5px;
   height: 40px;
   margin-left: 15px;
   padding: 10px;
 }
-.form-section .form button {
+.form-section .form button,
+.form-section .form1 button {
   padding: 14px;
   background-color: blue;
   transition: all 0.2s ease-in-out;
   border-radius: 5px;
   border: 1px solid red;
 }
-.form-section .form button:hover {
+.form-section .form button:hover,
+.form-section .form1 button:hover {
   cursor: pointer;
   padding: 16px;
   margin: -2px;
-}
-
-.form1 {
-  transform: translateY(0px);
-}
-
-.form2 {
-  transform: translateY(-90px);
 }
 
 @media (max-width: 1150px) {
@@ -62,11 +81,15 @@ header {
   }
 }
 .card-container {
+  background: url("https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80") 50% 50% no-repeat;
+  background-size: cover;
+  height: 90%;
   display: flex;
   justify-content: space-evenly;
   padding: 50px 200px;
   gap: 20px;
   flex-wrap: wrap;
+  overflow: auto;
 }
 .card-container .card {
   width: 300px;
@@ -94,6 +117,42 @@ header {
     padding: 50px 20px;
   }
 }
+.modal-class {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+  background-color: yellow;
+  border: 2px solid #7ac86a;
+  border-radius: 10px;
+  padding: 4px;
+  text-align: center;
+  display: none;
+  align-items: center;
+}
+
+.modal-student {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 500px;
+  background-color: yellow;
+  border: 2px solid #7ac86a;
+  border-radius: 10px;
+  padding: 4px;
+  text-align: center;
+  display: none;
+}
+
+.show-modal {
+  display: flex;
+}
+
 * {
   margin: 0;
   padding: 0;
