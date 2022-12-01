@@ -9,12 +9,19 @@ class Attribute {
     #name;
     #type;
     #required;
+    #details;
+    // parsing del tipo
+    // vedere se c'è un valore
+    // se c'è un valore check del type
+    // se il type corrisponde procedere alla normalizzazione
 
-    constructor(name, type, required) {
+    constructor(name, type, required = true, details) {
         console.log(`Creating attribute with ${name}, ${type}, ${required}`);
+
         this.name = name;
         this.type = type;
         this.#required = required;
+        this.#details = details;
         console.log(`Created attribute ${this}`);
     }
 
@@ -35,18 +42,50 @@ class Attribute {
     }
 
     set name(value) {
-        this.#name = value.trim();
+        if (this.isValue(value)) {
+            this.#name = value.trim();
+        } else {
+            alert('Name not valid');
+        }
     }
 
     set type(type) {
-        console.log(`Set ${type} for ${this.#name}`);
-        if (!this.allowedTypes.includes(type)) {
-            throw `Type ${type} is not allowed`;
+        //this.#type
+        // try catch
+        if (this.checkType(type)) {
+            this.#type = type;
         }
-        this.#type = type;
     }
+
+    isValue(value) {
+        console.log('Is value launched');
+
+        if (value == null || value == undefined) {
+            console.log('False, undefined or null');
+            return false;
+        } else if (value.replaceAll(' ', '') === '') {
+            console.log('False, no value');
+            return false;
+        }
+        console.log('True, there is value');
+        return true;
+    }
+
+    checkType(type) {
+        console.log(`Set ${type} for ${this.#name}`);
+
+        try {
+            if (!this.allowedTypes.includes(type)) {
+                throw new Error(`Type ${type} is not allowed`);
+            } else this.#type = type;
+        } catch (error) {
+            alert(error);
+        }
+    }
+
     validate(value) {
         console.log(`Validate ${value}: `, this);
+
         let success = false;
         switch (this.type) {
             case 'string':
@@ -55,7 +94,7 @@ class Attribute {
                 // Check if attribute is required
                 if (this.required) {
                     // Check if value is not empty
-                    success = success && value.replaceAll(' ', '').length > 0;
+                    success = success && this.isValue();
                 }
                 break;
             case 'number':
@@ -72,5 +111,8 @@ class Attribute {
         return success;
     }
 }
+
+let newAtrr = new Attribute('Cognome', 'string', true, { min: 6, max: 15 });
+console.log(newAtrr);
 
 export { Attribute };
