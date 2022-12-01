@@ -1,4 +1,6 @@
 .form-section {
+  transform: translateY(-400px);
+  transition: transform .7s ease-in-out;
   .form {
     display: flex;
     height: 100%;
@@ -28,6 +30,15 @@
       }
     }
   }
+}
+
+.form1 {
+  transform: translateY(0px);
+  // opacity: 0.6;
+}
+.form2 {
+  transform: translateY(-90px);
+  // opacity: 0.6;
 }
 
 @media (max-width: 1150px) {
