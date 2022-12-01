@@ -7,4 +7,6 @@ function getRandomId() {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
+function validateAttributes(value, type, required) {}
+
 export { getRandomId };
