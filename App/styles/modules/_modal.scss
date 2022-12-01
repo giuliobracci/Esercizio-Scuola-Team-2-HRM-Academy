@@ -1,0 +1,34 @@
+.modal-class {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: yellow;
+  border: 2px solid #7ac86a;
+  border-radius: 10px;
+  padding: 4px;
+  text-align: center;
+  display: none;
+  align-items: center;
+}
+
+.modal-student {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+//   width: -moz-fit-content;
+  width: 400px;
+  height: 500px;
+  background-color: yellow;
+  border: 2px solid #7ac86a;
+  border-radius: 10px;
+  padding: 4px;
+  text-align: center;
+  display: none;
+}
+.show-modal {
+  display: flex;
+}
