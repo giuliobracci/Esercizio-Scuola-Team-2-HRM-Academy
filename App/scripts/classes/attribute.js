@@ -10,6 +10,7 @@ class Attribute {
     #type;
     #required;
     #details;
+
     // parsing del tipo
     // vedere se c'è un valore
     // se c'è un valore check del type
@@ -113,6 +114,7 @@ class Attribute {
 }
 
 let newAtrr = new Attribute('Cognome', 'string', true, { min: 6, max: 15 });
+
 console.log(newAtrr);
 
 export { Attribute };
