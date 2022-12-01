@@ -1,5 +1,23 @@
 header {
-  text-align: center;
   padding: 20px;
   background-color: cadetblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10%;
+  .buttonContainer {
+    .addClass,
+    .addStudent {
+      padding: 8px 14px;
+      cursor: pointer;
+      background-color: azure;
+      border-radius: 5px;
+      border: 1px solid black;
+      &:hover {
+        cursor: pointer;
+        padding: 10px 16px;
+        margin: -2px;
+      }
+    }
+  }
 }
