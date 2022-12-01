@@ -1,42 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <script defer type="module" src="../scripts/app.js"></script>
-    </head>
-    <body>
-        <header>
-            <h1>Students Preview</h1>
-        </header>
-        <main class="list-container">
-            <section>
-                <form>
-                    <label for=""
-                        >Name
-                        <input type="text" placeholder="Name..." />
-                    </label>
-                    <label for=""
-                        >Surname
-                        <input type="text" placeholder="Surname..." />
-                    </label>
-                    <label for="birthday"
-                        >Birthday
-                        <input type="date" />
-                    </label>
-                    <label for=""
-                        >Class
-                        <input type="number" placeholder="class" />
-                    </label>
-                    <button type="submit">Add Student</button>
-                </form>
-            </section>
-            <section>
-                <div>Name : Ivan Surname : Ciccio Age : 14 Class : 1</div>
-            </section>
-        </main>
-        <footer></footer>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script defer type="module" src="../scripts/app.js"></script>
+    <link rel="stylesheet" href="/App/styles/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Students Preview</h1>
+    </header>
+    <main class="list-container">
+      <section class="form-section">
+        <form class="form">
+          <label for=""
+            >Name
+            <input type="text" placeholder="Name..." />
+          </label>
+          <label for=""
+            >Surname
+            <input type="text" placeholder="Surname..." />
+          </label>
+          <label for="birthday"
+            >Birthday
+            <input type="date" />
+          </label>
+          <label for=""
+            >Class
+            <input type="number" placeholder="class" />
+          </label>
+          <button type="submit">Add Student</button>
+        </form>
+      </section>
+      <section class="card-container">
+        <article class="card">
+          <ul>
+            <li>
+              Nome : Ivan <br />
+              Cognome : Frasca <br />
+              Età : 14
+            </li>
+          </ul>
+        </article>
+        <article class="card">
+          <ul>
+            <li>
+              Nome : Ivan <br />
+              Cognome : Frasca <br />
+              Età : 14
+            </li>
+          </ul>
+        </article>
+        <article class="card">
+          <ul>
+            <li>
+              Nome : Ivan <br />
+              Cognome : Frasca <br />
+              Età : 14
+            </li>
+          </ul>
+        </article>
+      </section>
+    </main>
+    <footer></footer>
+  </body>
 </html>
