@@ -9,6 +9,14 @@ import { addClass, addStudent } from "../scripts/util/buttonScript.js";
 document.querySelector(".addClass").addEventListener("click", addClass);
 document.querySelector(".addStudent").addEventListener("click", addStudent);
 
+window.addEventListener("click", (e) => {
+  if (e.target.classList.contains("darken-bg--visible")) {
+    e.target.classList.remove("darken-bg--visible");
+    document.querySelector(".modal-class").classList.remove("show-modal");
+    document.querySelector(".modal-student").classList.remove("show-modal");
+  }
+});
+
 ////////////////// TESTING - NOT REAL CODE /////////////
 
 let students = [];
