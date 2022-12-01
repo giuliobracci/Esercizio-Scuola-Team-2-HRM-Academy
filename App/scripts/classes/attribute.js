@@ -12,11 +12,6 @@ class Attribute {
     #type;
     #required;
 
-    // parsing del tipo
-    // vedere se c'è un valore
-    // se c'è un valore check del type
-    // se il type corrisponde procedere alla normalizzazione
-
     constructor(name, type, required = true) {
         console.log(`Creating attribute with ${name}, ${type}, ${required}`);
         this.name = name;
