@@ -5,15 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script defer type="module" src="../scripts/app.js"></script>
+    <script type="module" src="../scripts/app.js" defer></script>
     <link rel="stylesheet" href="/App/styles/style.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;500;900&display=swap");
+    </style>
   </head>
   <body>
     <header>
       <h1>Students Preview</h1>
+      <button class="addClass">Click Here to add a Class</button>
+      <button class="addStudent">Click Here to add a Student</button>
     </header>
     <main class="list-container">
       <section class="form-section">
+        <form class="form">
+          <label for=""
+            >Name
+            <input type="text" placeholder="Name..." />
+          </label>
+          <label for=""
+            >Age Required
+            <input type="text" placeholder="Surname..." />
+          </label>
+          <button type="submit">Add New Class</button>
+        </form>
+      </section>
+      <section class="form-section form-section-2">
         <form class="form">
           <label for=""
             >Name
@@ -29,12 +47,44 @@
           </label>
           <label for=""
             >Class
-            <input type="number" placeholder="class" />
+            <input type="text" placeholder="class" />
           </label>
           <button type="submit">Add Student</button>
         </form>
       </section>
       <section class="card-container">
+        <!-- <article class="card">
+          <ul>
+            <li>
+              Nome : Ivan <br />
+              Cognome : Frasca <br />
+              Età : 14
+            </li>
+            <li>
+              Nome : Ivan <br />
+              Cognome : Frasca <br />
+              Età : 14
+            </li>
+          </ul>
+        </article>
+        <article class="card">
+          <ul>
+            <li>
+              Nome : Ivan <br />
+              Cognome : Frasca <br />
+              Età : 14
+            </li>
+          </ul>
+        </article>
+        <article class="card">
+          <ul>
+            <li>
+              Nome : Ivan <br />
+              Cognome : Frasca <br />
+              Età : 14
+            </li>
+          </ul>
+        </article>
         <article class="card">
           <ul>
             <li>
@@ -62,6 +112,24 @@
             </li>
           </ul>
         </article>
+        <article class="card">
+          <ul>
+            <li>
+              Nome : Ivan <br />
+              Cognome : Frasca <br />
+              Età : 14
+            </li>
+          </ul>
+        </article>
+        <article class="card">
+          <ul>
+            <li>
+              Nome : Ivan <br />
+              Cognome : Frasca <br />
+              Età : 14
+            </li>
+          </ul>
+        </article> -->
       </section>
     </main>
     <footer></footer>
