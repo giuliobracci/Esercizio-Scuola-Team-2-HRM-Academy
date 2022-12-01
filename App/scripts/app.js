@@ -14,11 +14,11 @@ let newStudent = new Student('Paolo', 'Ferrante', '1982/02/02', getRandomId());
 let newClass = new SchoolClass(1, 14, students);
 let classes = [];
 classes.push(newClass);
-let newSchool = new School("Liceo Mario",classes);
+let newSchool = new School('Liceo Mario', classes);
 
 students.push(newStudent);
 students.push(new Student('Daniela', 'Ferrante', '1970/03/01', getRandomId()));
-
+/*
 ////////////////////////////////////////////////////////
 
 // TEST PERSONE
@@ -73,3 +73,4 @@ newSchool.addClass(classProva1);
 console.log(newSchool);
 newSchool.addClass(classProva2);
 console.log(newSchool);
+*/

@@ -3,26 +3,25 @@
 // DATE VALIDATION AND PARSING: https://www.npmjs.com/package/moment or https://day.js.org/ VERY LIGHT, 2kb
 // TYPE VALIDATION: https://www.npmjs.com/package/type or https://www.npmjs.com/package/superstruct
 
+import { showAlert } from '../util/utilis.js';
+
 class Attribute {
     //static contenente i types autorizzati
     static #allowedTypes = ['string', 'number', 'date', 'class'];
     #name;
     #type;
     #required;
-    #details;
 
     // parsing del tipo
     // vedere se c'è un valore
     // se c'è un valore check del type
     // se il type corrisponde procedere alla normalizzazione
 
-    constructor(name, type, required = true, details) {
+    constructor(name, type, required = true) {
         console.log(`Creating attribute with ${name}, ${type}, ${required}`);
-
         this.name = name;
         this.type = type;
         this.#required = required;
-        this.#details = details;
         console.log(`Created attribute ${this}`);
     }
 
@@ -46,15 +45,17 @@ class Attribute {
         if (this.isValue(value)) {
             this.#name = value.trim();
         } else {
-            alert('Name not valid');
+            showAlert('Name not valid');
         }
     }
 
     set type(type) {
-        //this.#type
-        // try catch
-        if (this.checkType(type)) {
-            this.#type = type;
+        try {
+            if (this.checkType(type)) {
+                this.#type = type;
+            }
+        } catch (error) {
+            showAlert(error);
         }
     }
 
@@ -69,6 +70,7 @@ class Attribute {
             return false;
         }
         console.log('True, there is value');
+
         return true;
     }
 
@@ -80,7 +82,7 @@ class Attribute {
                 throw new Error(`Type ${type} is not allowed`);
             } else this.#type = type;
         } catch (error) {
-            alert(error);
+            showAlert(error);
         }
     }
 
@@ -105,7 +107,10 @@ class Attribute {
                 success = !isNaN(Date.parse(value));
                 break;
             case 'class':
-                success = [1, 2, 3, 4, 5].includes(value);
+                let regEx = /^[0-9]{1}[A-Z]{1}$/;
+                regEx.test(value) === true
+                    ? (success = true)
+                    : (success = false);
                 break;
         }
 
@@ -113,7 +118,7 @@ class Attribute {
     }
 }
 
-let newAtrr = new Attribute('Cognome', 'string', true, { min: 6, max: 15 });
+let newAtrr = new Attribute('Cognome', 'string', true);
 
 console.log(newAtrr);
 

@@ -1,10 +1,10 @@
 class SchoolClass {
-    #number;
+    #name;
     #ageRequired;
     #students;
 
-    constructor(number, ageRequired, students = []) {
-        this.number = number;
+    constructor(name, ageRequired, students = []) {
+        this.name = name;
         this.ageRequired = ageRequired;
         this.students = students;
     }
@@ -17,16 +17,16 @@ class SchoolClass {
         this.#students = students;
     }
 
-    get number() {
-        return this.#number;
+    get name() {
+        return this.#name;
     }
 
     set ageRequired(age) {
         this.#ageRequired = age;
     }
 
-    set number(number) {
-        this.#number = number;
+    set name(name) {
+        this.#name = name;
     }
 
     isEligible(studentAge) {
