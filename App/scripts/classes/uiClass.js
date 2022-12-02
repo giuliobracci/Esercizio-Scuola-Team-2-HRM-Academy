@@ -42,14 +42,11 @@ class UIClass{
     addNewStudent() {
         const name = $('#nameStudent').val();
         const surname = $('#surnameStudent').val();
-        const birthday = $('#birthdayStudent').val();
-        const nameClass = $('#nameClass').val();
-        console.log(name)
-        console.log(surname)
-        console.log(birthday)
-        console.log(nameClass)
+        let birthday = $('#birthdayStudent').val();
+        const nameClass = $('#classStudent').val();
+        birthday = birthday.replaceAll('-','/');
         let student = new Student(name,surname,birthday,getRandomId());
-        this.school.addNewStudent(nameClass,student);
+        this.school.addStudent(nameClass,student);
         this.addNewElementToACard(nameClass,student);
     }
 
