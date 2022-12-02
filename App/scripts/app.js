@@ -115,6 +115,7 @@ window.addEventListener("click", (e) => {
 // // console.log(newSchool);
 // // console.log("oooooooooooooooooooooooooooooooooooooo");
 // console.log("Cercando Mirco");
+
 // console.log(newSchool.getStudent(1, student4));
 // newSchool.removeStudent(1, student4);
 // console.log("Rimuovendo Mirco");
