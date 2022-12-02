@@ -34,7 +34,6 @@
                 <form
                     class="form1"
                     id="classForm"
-                    onsubmit="addNewClassFromForm()"
                 >
                     <label for=""
                         >Class Name
@@ -70,7 +69,6 @@
                 <form
                     class="form"
                     id="studentForm"
-                    onsubmit="addNewStudentFormForm()"
                 >
                     <label for=""
                         >Name
@@ -81,6 +79,7 @@
                             minlength="2"
                             maxlength="16"
                             placeholder="Name..."
+                            id="nameStudent"
                         />
                     </label>
                     <label for=""
@@ -92,6 +91,7 @@
                             maxlength="16"
                             name="surname"
                             placeholder="Surname..."
+                            id="surnameStudent"
                         />
                     </label>
                     <label for="birthday"
@@ -101,6 +101,7 @@
                             name="Birth Day"
                             required
                             min="1950-01-01"
+                            id="birthdayStudent"
                         />
                     </label>
                     <label for=""
@@ -112,6 +113,7 @@
                             minlength="2"
                             maxlength="2"
                             placeholder="Class..."
+                            id="classStudent"
                         />
                     </label>
                     <button type="submit">Add Student</button>

@@ -1,4 +1,7 @@
 import { getRandomId } from "../util/utilis.js";
+import { SchoolClass } from "../classes/schoolClass.js";
+import { School } from "../classes/school.js";
+import { Student } from "../classes/student.js";
 
 class UIClass{
     #school;
@@ -30,34 +33,31 @@ class UIClass{
     }
     
     addNewClass() {
-        let obj = {};
-        for (const elem of Object.values(this.#classForm)) {
-            if (elem.type != 'submit') {
-                obj[elem.id] = elem.value
-            }
-        }
-        this.#school.addNewClass(new SchoolClass(obj.name,obj.ageRequired));
-        this.addNewCard(obj.name)
+        const nameClass = $("#nameClass").val();
+        const ageRequired = $("#ageRequired").val();
+        this.school.addClass(new SchoolClass(nameClass,ageRequired));
+        this.addNewCard(nameClass);
     }
 
     addNewStudent() {
-        let obj = {}
-        for (const elem of Object.values(this.#studentForm)) {
-            if (elem.type != 'submit') {
-                obj[elem.id] = elem.value
-            }
-        }
-        let student = new Student(obj.name,obj.surname,obj.birthday,getRandomId());
-        this.#school.addNewStudent(obj.class,student);
+        const name = $('#nameStudent').val();
+        const surname = $('#surnameStudent').val();
+        let birthday = $('#birthdayStudent').val();
+        const nameClass = $('#classStudent').val();
+        birthday = birthday.replaceAll('-','/');
+        let student = new Student(name,surname,birthday,getRandomId());
+        this.school.addStudent(nameClass,student);
         this.addNewElementToACard(nameClass,student);
     }
 
     addNewCard(nameClass) {
         let newElement  = $('<article class="card" id='+nameClass+'></article>');
+        let titleCard  = $('<h2 class="title-card">'+nameClass+'</h2>');
         let idList = nameClass+"List";
         let list  = $('<ul id='+idList+'></ul>');
+        titleCard.appendTo(newElement);
         list.appendTo(newElement);
-        newElement.appendTo(this.#cardContainer);
+        newElement.appendTo(this.cardContainer);
     }
 
     addNewElementToACard(nameClass,student) {
