@@ -63,14 +63,35 @@ class UIClass{
         newElement.appendTo(this.cardContainer);
     }
 
+    buttonsStudent(e) {
+        
+        console.log(e.target)
+        document.querySelector(".modal-edit").classList.toggle("show-modal");
+    }
+
     addNewElementToACard(nameClass,student) {
         let list = $('#'+nameClass+'List');
-        let newElement  = $('<li id='+student.id+'>'+
-            'Surname: ' + student.surname + '<br>' +
-            'Name: ' + student.name + '<br>' +
-            'Age: ' + student.getAge() + '</li>');
-        newElement.appendTo(list);
+        let newElement = document.createElement("li");
+        newElement.setAttribute("id",student.id);
+        newElement.addEventListener("click",this.buttonsStudent);
+        newElement.innerHTML = 'Surname: ' + student.surname + '<br>' + 'Name: ' + student.name + '<br>' +'Age: ' + student.getAge();
+        list.append(newElement);
     }
+
+    removeStudent(nameClass,student) {
+        this.school.removeStudent(nameClass,student);
+        this.removeElementFromACard(student);
+    }
+
+    removeElementFromACard(student) {
+        $('"#'+student+'"').remove();
+    }
+
+    updateStudent(nameClass,student){
+
+    }
+
+    
 }
 
 export { UIClass };

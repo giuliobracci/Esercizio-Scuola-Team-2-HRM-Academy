@@ -20,6 +20,7 @@ $('#nameSchool').text(school.name);
 
 document.querySelector('.addClass').addEventListener('click', uiObj.buttonAddClass);
 document.querySelector('.addStudent').addEventListener('click', uiObj.buttonAddStudent);
+
 classForm.addEventListener('submit',e => {
   e.preventDefault();
   uiObj.addNewClass();

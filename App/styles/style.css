@@ -180,6 +180,23 @@ header .buttonContainer .addStudent {
   z-index: 999;
 }
 
+.modal-edit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 200px;
+  background-color: yellow;
+  border: 2px solid #7ac86a;
+  border-radius: 10px;
+  padding: 4px;
+  text-align: center;
+  display: none;
+  align-items: center;
+  z-index: 999;
+}
+
 .modal-student {
   position: absolute;
   top: 50%;
