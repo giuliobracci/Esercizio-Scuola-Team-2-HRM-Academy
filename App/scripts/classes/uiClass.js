@@ -5,14 +5,29 @@ class UIClass{
     #classForm;
     #studentForm;
     #cardContainer
+    #classButton
+    #studentButton
 
-    constructor(school,classForm,studentForm,cardContainer) {
+    constructor(school,classForm,studentForm,cardContainer,classButton,studentButton) {
         this.school = school;
         this.classForm = classForm;
         this.studentForm = studentForm;
         this.cardContainer = cardContainer;
+        this.classButton = classButton;
+        this.studentButton = studentButton;
     }
 
+    buttonAddClass() {
+        document.querySelector(".modal-class").classList.toggle("show-modal");
+        document.querySelector(".modal-student").classList.remove("show-modal");
+        document.querySelector(".darken-bg").classList.toggle("darken-bg--visible");
+    }
+
+    buttonAddStudent() {
+        document.querySelector(".modal-student").classList.toggle("show-modal");
+        document.querySelector(".modal-class").classList.remove("show-modal");
+        document.querySelector(".darken-bg").classList.toggle("darken-bg--visible");
+    }
     
     addNewClass() {
         let obj = {};

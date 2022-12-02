@@ -1,13 +1,24 @@
-import { Attribute } from "./classes/attribute.js";
-import { Person } from "./classes/person.js";
-import { Student } from "./classes/student.js";
-import { getRandomId } from "../scripts/util/utilis.js";
-import { SchoolClass } from "../scripts/classes/schoolClass.js";
-import { School } from "../scripts/classes/school.js";
-import { addClass, addStudent } from "../scripts/util/buttonScript.js";
+import { Attribute } from './classes/attribute.js';
+import { Person } from './classes/person.js';
+import { Student } from './classes/student.js';
+import { getRandomId } from '../scripts/util/utilis.js';
+import { SchoolClass } from '../scripts/classes/schoolClass.js';
+import { School } from '../scripts/classes/school.js';
+import { addClass, addStudent } from '../scripts/util/buttonScript.js';
+import { UIClass } from '../scripts/classes/uiClass.js'
 
-document.querySelector(".addClass").addEventListener("click", addClass);
-document.querySelector(".addStudent").addEventListener("click", addStudent);
+let school = new School("Liceo Mario Students");
+const classForm = $('#classForm')[0];
+const studentForm = $('#studentForm')[0];
+const cardContainer = $('.card-container')[0];
+const buttonClass = $('.addClass');
+const buttonStudent = $('.addStudent');
+let uiObj = new UIClass(school,classForm,studentForm,cardContainer,buttonClass,buttonStudent);
+
+$('#nameSchool').text(school.name);
+
+document.querySelector('.addClass').addEventListener('click', uiObj.buttonAddClass);
+document.querySelector('.addStudent').addEventListener('click', uiObj.buttonAddStudent);
 
 window.addEventListener("click", (e) => {
   if (e.target.classList.contains("darken-bg--visible")) {
@@ -16,6 +27,29 @@ window.addEventListener("click", (e) => {
     document.querySelector(".modal-student").classList.remove("show-modal");
   }
 });
+
+// // $(document).ready(function(){
+// //   let uiObj = start();
+// //   console.log(uiObj.classForm)
+// //   //uiObj.addNewClass();
+// //   $("#addClassForm").click(function(){alert(uiObj.classForm)})
+// // })
+
+// // function start() {
+ 
+  
+// //   return uiObj;
+// // }
+
+// // function addNewClassFromForm(){
+// //   console.log("I'm  here")
+// //   console.log(uiObj.classForm)
+// //   //uiObj.addNewClass();
+// // };
+
+// // function addNewStudentFromForm() {
+// //   uiObj.addNewStudent();
+// // };
 
 
 
@@ -69,7 +103,7 @@ window.addEventListener("click", (e) => {
 
 // // TEST SCUOLA
 
-// //////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
 // console.log(newSchool);
 // const student4 = new Student("Mirco", "Vucinic", "2020/02/02", getRandomId());
 // newSchool.addStudent(1, student4);
@@ -85,15 +119,15 @@ window.addEventListener("click", (e) => {
 // newSchool.removeStudent(1, student4);
 // console.log("Rimuovendo Mirco");
 // console.log(newSchool);
-// // console.log("oooooooooooooooooooooooooooooooooooooo");
-// // newSchool.removeStudent(1,student4);
-// // console.log("Rimuovendo Mirco");
-// // console.log(newSchool);
-// // console.log("oooooooooooooooooooooooooooooooooooooo");
-// // console.log("oooooooooooooooooooooooooooooooooooooo");
-// // console.log("Cercando Mirco");
-// // console.log(newSchool.getStudent(1,student4));
-// // console.log("oooooooooooooooooooooooooooooooooooooo");
+// console.log("oooooooooooooooooooooooooooooooooooooo");
+// newSchool.removeStudent(1,student4);
+// console.log("Rimuovendo Mirco");
+// console.log(newSchool);
+// console.log("oooooooooooooooooooooooooooooooooooooo");
+// console.log("oooooooooooooooooooooooooooooooooooooo");
+// console.log("Cercando Mirco");
+// console.log(newSchool.getStudent(1,student4));
+// console.log("oooooooooooooooooooooooooooooooooooooo");
 // console.log("----------------------------------------");
 // let classProva1 = new SchoolClass(2, 14);
 // let classProva2 = new SchoolClass(2, 14);
