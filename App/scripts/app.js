@@ -23,7 +23,7 @@ document.querySelector('.addClass').addEventListener('click', uiObj.buttonAddCla
 document.querySelector('.addStudent').addEventListener('click', uiObj.buttonAddStudent);
 document.querySelector("#removeStudent").addEventListener("click",(e)=>{
   uiObj.removeStudent(e)
-  let className = uiObj.school.getStudentClass();
+  let className = uiObj.school.getStudentClass(e.target.name);
   uiObj.school.removeStudent(className,e.target.name);
 });
 
@@ -32,7 +32,26 @@ document.querySelector("#updateStudent").addEventListener("click",(e) => {
   document.querySelector(".buttonEditStudent").setAttribute("name",e.target.name);
 });
 
-document.querySelector("#changeClassStudent").addEventListener("click",uiObj.removeStudent);
+document.querySelector("#changeClassStudent").addEventListener("click",(e) =>{
+  document.querySelector(".modal-editClass").classList.toggle("show-modal");
+  let oldClass = uiObj.school.getStudentClass(e.target.name);
+  document.querySelector("#oldClass").innerHTML = "Old Class: "+oldClass;
+  document.querySelector("#changeClassButtonSelect").setAttribute("name",e.target.name)
+});
+
+document.querySelector("#changeClassButtonSelect").addEventListener('click',(e)=>{
+  let idStudent = document.querySelector("#changeClassButtonSelect").getAttribute("name");
+  let oldClass = uiObj.school.getStudentClass(idStudent);
+  let newClass = document.querySelector("#classStudentEditSelect").value;
+  let student = uiObj.school.getStudent(idStudent);
+  uiObj.school.removeStudent(oldClass,idStudent);
+  uiObj.school.addStudent(newClass,student);
+  uiObj.removeStudent(e);
+  uiObj.addNewElementToACard(newClass,student);
+  document.querySelector(".modal-edit").classList.remove("show-modal");
+  document.querySelector(".modal-editClass").classList.remove("show-modal");
+  document.querySelector(".darken-bg").classList.remove("darken-bg--visible");
+})
 
 classForm.addEventListener('submit',e => {
   e.preventDefault();

@@ -185,7 +185,7 @@ header .buttonContainer .addStudent:hover {
   z-index: 999;
 }
 
-.modal-edit {
+.modal-edit, .modal-editClass {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -203,18 +203,18 @@ header .buttonContainer .addStudent:hover {
   justify-content: center;
   flex-direction: column;
 }
-.modal-edit .buttons {
+.modal-edit .buttons, .modal-editClass .buttons {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-.modal-edit .buttons button {
+.modal-edit .buttons button, .modal-editClass .buttons button {
   padding: 14px 16px;
   background-color: #7ac86a;
   border-radius: 5%;
   transition: all 0.1s ease-in-out;
 }
-.modal-edit .buttons button:hover {
+.modal-edit .buttons button:hover, .modal-editClass .buttons button:hover {
   cursor: pointer;
   padding: 16px 18px;
   margin: -2px;

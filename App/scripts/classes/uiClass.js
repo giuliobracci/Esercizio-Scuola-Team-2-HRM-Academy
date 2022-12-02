@@ -48,6 +48,8 @@ class UIClass{
         const ageRequired = this.classForm.AgeRequired.value;
         this.school.addClass(new SchoolClass(nameClass,ageRequired));
         this.selectClass.append('<option value='+nameClass+'>'+nameClass+'</option>');
+        const select = $('#classStudentEditSelect');
+        select.append('<option value='+nameClass+'>'+nameClass+'</option>');
         this.addNewCard(nameClass);
     }
 
