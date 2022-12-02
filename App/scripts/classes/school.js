@@ -80,12 +80,12 @@ class School {
     removeStudent(schoolClass, student) {
         for (let classInSchool of this.#classes) {
             if (classInSchool.name === schoolClass) {
-                if (classInSchool.students.find(e => student.id === e.id)) {
+                if (classInSchool.students.find(e => student === e.id)) {
                     classInSchool.students = classInSchool.students.filter(
-                        e => student.id != e.id
+                        e => student != e.id
                     );
                 } else {
-                    throw `Student ${student.name} ${student.surname} doesn't exist in ${classInSchool.name}`;
+                    throw `Student with id: ${student} doesn't exist in ${classInSchool.name}`;
                 }
             }
         }
@@ -101,12 +101,12 @@ class School {
         let studentToReturn;
         for (let classInSchool of this.classes) {
             if (classInSchool.name == schoolClass) {
-                if (classInSchool.students.find(e => student.id === e.id)) {
+                if (classInSchool.students.find(e => student === e.id)) {
                     studentToReturn = classInSchool.students.find(
-                        e => student.id === e.id
+                        e => student === e.id
                     );
                 } else {
-                    throw `Student ${student.name} ${student.surname} doesn't exist in ${classInSchool.name}`;
+                    throw `Student with id: ${student} doesn't exist in ${classInSchool.name}`;
                 }
             }
         }

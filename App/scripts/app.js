@@ -32,6 +32,7 @@ document
 document
     .querySelector('.addStudent')
     .addEventListener('click', uiObj.buttonAddStudent);
+
 classForm.addEventListener('submit', e => {
     e.preventDefault();
     uiObj.addNewClass();

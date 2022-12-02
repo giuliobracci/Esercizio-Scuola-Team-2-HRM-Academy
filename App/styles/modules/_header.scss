@@ -13,6 +13,7 @@ header {
       background-color: azure;
       border-radius: 5px;
       border: 1px solid black;
+      transition: all 0.1s ease-in-out;
       &:hover {
         cursor: pointer;
         padding: 10px 16px;
@@ -53,7 +54,11 @@ header {
       gap: 15px;
       .addClass,
       .addStudent {
-        padding: 8px 0;
+        padding: 8px 20px;
+        &:hover {
+          padding: 10px 22px;
+          margin: -2px;
+        }
       }
     }
   }
