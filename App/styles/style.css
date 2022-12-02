@@ -13,6 +13,7 @@ header .buttonContainer .addStudent {
   background-color: azure;
   border-radius: 5px;
   border: 1px solid black;
+  transition: all 0.1s ease-in-out;
 }
 header .buttonContainer .addClass:hover,
 header .buttonContainer .addStudent:hover {
@@ -47,7 +48,12 @@ header .buttonContainer .addStudent {
   }
   header .buttonContainer .addClass,
 header .buttonContainer .addStudent {
-    padding: 8px 0;
+    padding: 8px 20px;
+  }
+  header .buttonContainer .addClass:hover,
+header .buttonContainer .addStudent:hover {
+    padding: 10px 22px;
+    margin: -2px;
   }
 }
 .form-section {
@@ -72,11 +78,10 @@ header .buttonContainer .addStudent {
   flex-direction: column;
   gap: 10px;
 }
-.form-section .form label input,
-.form-section .form1 label input {
+.form-section .form input,
+.form-section .form1 input {
   border-radius: 5px;
   height: 40px;
-  margin-left: 15px;
   padding: 10px;
 }
 .form-section .form button,
@@ -185,8 +190,8 @@ header .buttonContainer .addStudent {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   background-color: yellow;
   border: 2px solid #7ac86a;
   border-radius: 10px;
@@ -195,6 +200,24 @@ header .buttonContainer .addStudent {
   display: none;
   align-items: center;
   z-index: 999;
+  justify-content: center;
+  flex-direction: column;
+}
+.modal-edit .buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.modal-edit .buttons button {
+  padding: 14px 16px;
+  background-color: #7ac86a;
+  border-radius: 5%;
+  transition: all 0.1s ease-in-out;
+}
+.modal-edit .buttons button:hover {
+  cursor: pointer;
+  padding: 16px 18px;
+  margin: -2px;
 }
 
 .modal-student, .modal-editStudent {
