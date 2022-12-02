@@ -8,9 +8,95 @@ import { showAlert } from '../util/utilis.js';
 class Attribute {
     //static contenente i types autorizzati
     static #allowedTypes = ['string', 'number', 'date', 'class'];
+
     #name;
     #type;
     #required;
+
+    static validateAttributes(classInstance) {
+        for (let attribute in classInstance.attributes) {
+            Attribute.formatAndValidate(
+                classInstance[attribute],
+                classInstance[attribute].type,
+                classInstance[attribute].required
+            );
+        }
+    }
+
+    static isValue(value) {
+        console.log('Is value launched');
+
+        if (value === null || value === undefined || value === '') {
+            return false;
+        } else if (String(value).replaceAll(' ', '') === '') {
+            console.log('False, no value');
+            return false;
+        }
+        console.log('True, there is value');
+
+        return true;
+    }
+
+    static formatAndValidate(value, type, required) {
+        console.log(`Validate ${value}: `, value);
+
+        while (required) {
+            if (!Attribute.isValue(value)) {
+                throw new Error('No value found. Please fill the input field');
+            } else {
+                switch (type) {
+                    case 'string':
+                        if (!typeof value === 'string') {
+                            throw new TypeError('Expected a string');
+                        }
+                        value = value.trim();
+                        break;
+
+                    case 'number':
+                        try {
+                            if (isNaN(+value)) {
+                                throw new TypeError('Expect a number');
+                            } else value = +value;
+                            break;
+                        } catch (error) {
+                            console.log(error);
+                        }
+
+                    case 'date':
+                        let dateRegEx = /^[0-9]{2,4}\/[0-9]{2}\/[0-9]{2,4}$/;
+                        if (!dateRegEx.test(value)) {
+                            throw new TypeError(
+                                'Date formats accepted: DD/MM/YYYY, DD/MM/YY, YYYY/MM/DD, YY/MM/DD'
+                            );
+                        }
+                        break;
+
+                    case 'class':
+                        let schoolClassRegEx = /^[0-9]{1}[A-Z]{1}$/;
+                        if (!schoolClassRegEx.test(value)) {
+                            throw new TypeError(
+                                'Class must be a number+a-z letter'
+                            );
+                        }
+                        break;
+                }
+
+                return value;
+            }
+        }
+        return value;
+    }
+
+    static capitalize(string) {
+        let trimmedString = string.trim();
+        return `${trimmedString[0].toUpperCase()}${trimmedString
+            .slice(1)
+            .toLowerCase()}`;
+    }
+
+    static formatAllCaps(string) {
+        return string.toUpperCase();
+    }
 
     constructor(name, type, required = true) {
         console.log(`Creating attribute with ${name}, ${type}, ${required}`);
@@ -37,7 +123,7 @@ class Attribute {
     }
 
     set name(value) {
-        if (this.isValue(value)) {
+        if (this.constructor.isValue(value)) {
             this.#name = value.trim();
         } else {
             showAlert('Name not valid');
@@ -54,67 +140,19 @@ class Attribute {
         }
     }
 
-    isValue(value) {
-        console.log('Is value launched');
-
-        if (value == null || value == undefined) {
-            console.log('False, undefined or null');
-            return false;
-        } else if (value.replaceAll(' ', '') === '') {
-            console.log('False, no value');
-            return false;
-        }
-        console.log('True, there is value');
-
-        return true;
-    }
-
     checkType(type) {
         console.log(`Set ${type} for ${this.#name}`);
 
         try {
             if (!this.allowedTypes.includes(type)) {
-                throw new Error(`Type ${type} is not allowed`);
+                throw new TypeError(
+                    `Type ${type} is not allowed. Allowed types: string, number, date and class`
+                );
             } else this.#type = type;
         } catch (error) {
             showAlert(error);
         }
     }
-
-    validate(value) {
-        console.log(`Validate ${value}: `, this);
-
-        let success = false;
-        switch (this.type) {
-            case 'string':
-                // Check if type of value is string
-                success = typeof value === 'string';
-                // Check if attribute is required
-                if (this.required) {
-                    // Check if value is not empty
-                    success = success && this.isValue();
-                }
-                break;
-            case 'number':
-                success = !isNaN(+value);
-                break;
-            case 'date':
-                success = !isNaN(Date.parse(value));
-                break;
-            case 'class':
-                let regEx = /^[0-9]{1}[A-Z]{1}$/;
-                regEx.test(value) === true
-                    ? (success = true)
-                    : (success = false);
-                break;
-        }
-
-        return success;
-    }
 }
-
-let newAtrr = new Attribute('Cognome', 'string', true);
-
-console.log(newAtrr);
 
 export { Attribute };

@@ -17,8 +17,10 @@ class Person {
      * @param {String} surname Person'surname
      * @param {Date} birthday Person'birthday
      */
+
     constructor(name, surname, birthday) {
         console.log(`Creating person with ${name}, ${surname}, ${birthday}`);
+
         this.name = name;
         this.surname = surname;
         this.birthday = birthday;
@@ -33,16 +35,38 @@ class Person {
     get surname() {
         return this.#surname;
     }
+    get birthday() {
+        return this.#birthday;
+    }
+    get attributes() {
+        return this.constructor.#attributes;
+    }
 
     set name(newName) {
-        this.#name = newName;
+        this.#name = Attribute.capitalize(
+            Attribute.formatAndValidate(
+                newName,
+                Person.#attributes.name.type,
+                Person.#attributes.name.required
+            )
+        );
     }
 
     set surname(newSurname) {
-        this.#surname = newSurname;
+        this.#surname = Attribute.capitalize(
+            Attribute.formatAndValidate(
+                newSurname,
+                Person.#attributes.name.type,
+                Person.#attributes.name.required
+            )
+        );
     }
     set birthday(newBirthday) {
-        this.#birthday = newBirthday;
+        this.#birthday = Attribute.formatAndValidate(
+            newBirthday,
+            Person.#attributes.birthday.type,
+            Person.#attributes.birthday.required
+        );
     }
 
     /**
@@ -50,6 +74,7 @@ class Person {
      * @param {Date} date Today by default or a specific date
      * @returns {Number} Person'age
      */
+
     getAge(date = new Date()) {
         const factor = 3.17098 * Math.pow(10, -11);
         console.log(`Getting age: today is ${date}`);
@@ -57,7 +82,4 @@ class Person {
     }
 }
 
-let newPerson2 = new Person('Mario', 'Rossi', '20/01/1994');
-newPerson2.validateAttributes();
-console.log(newPerson2);
 export { Person };

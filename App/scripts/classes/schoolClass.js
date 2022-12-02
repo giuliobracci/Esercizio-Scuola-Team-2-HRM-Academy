@@ -1,6 +1,10 @@
 import { Attribute } from './attribute.js';
 
 class SchoolClass {
+    // Naming:
+    // Name must be formed by "number"+"letter" example: "5A", "4a"
+    // The name will be automatically parsed to all caps
+
     static #attributes = {
         name: new Attribute('name', 'class', true),
         ageRequired: new Attribute('ageRequired', 'number', true),
@@ -33,13 +37,25 @@ class SchoolClass {
     get name() {
         return this.#name;
     }
-
-    set ageRequired(age) {
-        this.#ageRequired = age;
+    get attributes() {
+        return this.constructor.#attributes;
+    }
+    set name(name) {
+        this.#name = Attribute.formatAllCaps(
+            Attribute.formatAndValidate(
+                name,
+                SchoolClass.#attributes.name.type,
+                SchoolClass.#attributes.name.required
+            )
+        );
     }
 
-    set name(name) {
-        this.#name = name;
+    set ageRequired(age) {
+        this.#ageRequired = Attribute.formatAndValidate(
+            age,
+            SchoolClass.#attributes.ageRequired.type,
+            SchoolClass.#attributes.ageRequired.required
+        );
     }
 
     /**
