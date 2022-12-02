@@ -34,6 +34,10 @@ class SchoolClass {
         this.#students = students;
     }
 
+    get ageRequired(){
+        return this.#ageRequired;
+    }
+
     get name() {
         return this.#name;
     }

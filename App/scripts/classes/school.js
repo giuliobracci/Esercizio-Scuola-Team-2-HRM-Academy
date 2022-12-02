@@ -41,6 +41,16 @@ class School {
         this.#classes = classes;
     }
 
+    getClass(nameClass){
+        let classToReturn;
+        for(let classSchool of this.classes) {
+            if(classSchool.name === nameClass){
+                classToReturn = classSchool;
+            }
+        }
+        return classToReturn;
+    }
+
     /**
      * Adds a class to the School
      * @param {SchoolClass} schoolClass SchoolClass to add to the School

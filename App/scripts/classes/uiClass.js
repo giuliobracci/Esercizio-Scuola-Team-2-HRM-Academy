@@ -48,6 +48,8 @@ class UIClass{
         const ageRequired = this.classForm.AgeRequired.value;
         this.school.addClass(new SchoolClass(nameClass,ageRequired));
         this.selectClass.append('<option value='+nameClass+'>'+nameClass+'</option>');
+        const select = $('#classStudentEditSelect');
+        select.append('<option value='+nameClass+'>'+nameClass+'</option>');
         this.addNewCard(nameClass);
     }
 
@@ -83,6 +85,12 @@ class UIClass{
         let list = $('#'+nameClass+'List');
         let newElement = document.createElement("li");
         newElement.setAttribute("id",student.id);
+        let classRequired = this.school.getClass(nameClass);
+        if(student.getAge()>classRequired.ageRequired){
+            newElement.style.color="red";
+        }else{
+            newElement.style.color='#777';
+        }
         newElement.addEventListener("click",this.buttonsStudent);
         newElement.innerHTML = 'Surname: ' + student.surname + '<br>' + 'Name: ' + student.name + '<br>' +'Age: ' + student.getAge();
         list.append(newElement);
