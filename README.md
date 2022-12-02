@@ -8,10 +8,10 @@ Join our community, learn how to manage in a smart way.
 
 ## Team Members 👨🏻‍💻
 
-- [Luca Esposito]
-- [Giulio Bracci]
-- [Mauro Spinosi]
-- [Ivan Frasca]
+- Luca Esposito
+- Giulio Bracci
+- Mauro Spinosi
+- Ivan Frasca
 
 ## Workflow and Management  🗂 
 
