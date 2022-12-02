@@ -21,6 +21,14 @@ class UIClass{
         this.studentButton = studentButton;
         this.selectClass = selectClass;
     }
+    
+    get school() {
+        return this.#school;
+    }
+
+    set school(school) {
+        this.#school = school;
+    }
 
     buttonAddClass() {
         document.querySelector(".modal-class").classList.toggle("show-modal");
@@ -64,9 +72,10 @@ class UIClass{
     }
 
     buttonsStudent(e) {
-        
-        console.log(e.target)
         document.querySelector(".modal-edit").classList.toggle("show-modal");
+        document.querySelector("#removeStudent").setAttribute("name",e.target.id);
+        document.querySelector("#updateStudent").setAttribute("name",e.target.id);
+        document.querySelector("#changeClassStudent").setAttribute("name",e.target.id);
     }
 
     addNewElementToACard(nameClass,student) {
@@ -78,17 +87,13 @@ class UIClass{
         list.append(newElement);
     }
 
-    removeStudent(nameClass,student) {
-        this.school.removeStudent(nameClass,student);
-        this.removeElementFromACard(student);
+    removeStudent(e) {
+        $('#'+e.target.name+'').remove();
+        document.querySelector(".modal-edit").classList.remove("show-modal");
     }
 
-    removeElementFromACard(student) {
-        $('"#'+student+'"').remove();
-    }
-
-    updateStudent(nameClass,student){
-
+    updateStudent(e){
+        
     }
 
     

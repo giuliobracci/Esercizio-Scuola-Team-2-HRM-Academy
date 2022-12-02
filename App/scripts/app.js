@@ -20,6 +20,15 @@ $('#nameSchool').text(school.name);
 
 document.querySelector('.addClass').addEventListener('click', uiObj.buttonAddClass);
 document.querySelector('.addStudent').addEventListener('click', uiObj.buttonAddStudent);
+document.querySelector("#removeStudent").addEventListener("click",(e)=>{
+  uiObj.removeStudent(e)
+  let className = uiObj.school.getStudentClass();
+  uiObj.school.removeStudent(className,e.target.name);
+});
+document.querySelector("#updateStudent").addEventListener("click",(e) => {
+  uiObj.updateStudent(e)
+});
+document.querySelector("#changeClassStudent").addEventListener("click",uiObj.removeStudent);
 
 classForm.addEventListener('submit',e => {
   e.preventDefault();

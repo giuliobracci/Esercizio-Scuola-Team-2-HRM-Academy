@@ -112,6 +112,20 @@ class School {
         }
         return studentToReturn;
     }
+
+    getStudentClass(idStudent) {
+        let className;
+        if(this.classes.length>0) {
+            for (let classInSchool of this.classes) {
+                for(let student of classInSchool.students) {
+                    if(student.id === idStudent){
+                        className=classInSchool.name;
+                    }
+                }
+            }
+        }
+        return className;
+    }
 }
 
 export { School };
