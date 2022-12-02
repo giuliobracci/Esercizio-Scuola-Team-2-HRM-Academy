@@ -1,0 +1,65 @@
+header {
+  padding: 20px;
+  background-color: cadetblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10%;
+  .buttonContainer {
+    .addClass,
+    .addStudent {
+      padding: 8px 14px;
+      cursor: pointer;
+      background-color: azure;
+      border-radius: 5px;
+      border: 1px solid black;
+      transition: all 0.1s ease-in-out;
+      &:hover {
+        cursor: pointer;
+        padding: 10px 16px;
+        margin: -2px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    .titleContainer {
+      h1 {
+        font-size: 20px;
+      }
+    }
+    .buttonContainer {
+      .addClass,
+      .addStudent {
+        padding: 8px 0;
+        font-size: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  header {
+    justify-content: center;
+    .titleContainer {
+      display: none;
+      h1 {
+        font-size: 20px;
+      }
+    }
+    .buttonContainer {
+      display: flex;
+      gap: 15px;
+      .addClass,
+      .addStudent {
+        padding: 8px 20px;
+        &:hover {
+          padding: 10px 22px;
+          margin: -2px;
+        }
+      }
+    }
+  }
+}

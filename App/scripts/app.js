@@ -3,52 +3,75 @@ import { Person } from './classes/person.js';
 import { Student } from './classes/student.js';
 import { getRandomId } from '../scripts/util/utilis.js';
 import { SchoolClass } from '../scripts/classes/schoolClass.js';
+import { School } from '../scripts/classes/school.js';
+import { addClass, addStudent } from '../scripts/util/buttonScript.js';
+import { UIClass } from '../scripts/classes/uiClass.js'
 
-//////////////////// TESTING - NOT REAL CODE /////////////
+let school = new School("Test Scuola");
+const classForm = $('#classForm')[0];
+const studentForm = $('#studentForm')[0];
+const studentEditForm = $('#studentEditForm')[0];
+const cardContainer = $('.card-container');
+const buttonClass = $('.addClass');
+const buttonStudent = $('.addStudent');
+const selectClass = $('#classStudent');
+let uiObj = new UIClass(school,classForm,studentForm,cardContainer,buttonClass,buttonStudent,selectClass);
 
-let students = [];
-let newAttribute = new Attribute('Name', 'string', true);
-let newPerson = new Person('Luca', 'Rampini', '1980/01/02');
-let newStudent = new Student('Paolo', 'Ferrante', '1982/02/02', getRandomId());
-let newClass = new SchoolClass(1, 14, students);
+$('#nameSchool').text(school.name);
 
-students.push(newStudent);
-students.push(new Student('Daniela', 'Ferrante', '1970/03/01', getRandomId()));
+document.querySelector('.addClass').addEventListener('click', uiObj.buttonAddClass);
+document.querySelector('.addStudent').addEventListener('click', uiObj.buttonAddStudent);
+document.querySelector("#removeStudent").addEventListener("click",(e)=>{
+  uiObj.removeStudent(e)
+  let className = uiObj.school.getStudentClass();
+  uiObj.school.removeStudent(className,e.target.name);
+});
 
-////////////////////////////////////////////////////////
+document.querySelector("#updateStudent").addEventListener("click",(e) => {
+  document.querySelector(".modal-editStudent").classList.toggle("show-modal");
+  document.querySelector(".buttonEditStudent").setAttribute("name",e.target.name);
+});
 
-// TEST PERSONE
+document.querySelector("#changeClassStudent").addEventListener("click",uiObj.removeStudent);
 
-console.log(newAttribute);
-console.log(newPerson);
-console.log(newPerson.getAge());
-console.log(newPerson);
+classForm.addEventListener('submit',e => {
+  e.preventDefault();
+  uiObj.addNewClass();
+  document.querySelector(".modal-class").classList.remove("show-modal");
+  document.querySelector(".darken-bg").classList.remove("darken-bg--visible");
+  classForm.reset();
+});
 
-// TEST GETTER SETTER PERSONA
+studentForm.addEventListener('submit',e => {
+  e.preventDefault();
+  uiObj.addNewStudent();
+  document.querySelector(".modal-student").classList.remove("show-modal");
+  document.querySelector(".darken-bg").classList.remove("darken-bg--visible");
+  studentForm.reset();
+});
 
-console.log(newPerson);
-console.log(newPerson.name);
-console.log(newPerson.surname);
-console.log(newPerson.name);
+studentEditForm.addEventListener('submit',e => {
+  e.preventDefault();
+  let idStudent = document.querySelector(".buttonEditStudent").getAttribute("name");
+  console.log(idStudent)
+  let student = school.getStudent(idStudent);
+  student.name = (document.querySelector("#editNameStudent").value);
+  student.surname = (document.querySelector("#editSurnameStudent").value);
+  let birthday = document.querySelector("#editBirthdayStudent").value;
+  birthday = birthday.replaceAll('-','/');
+  student.birthday = (birthday);
+  uiObj.updateStudent(student);
+  document.querySelector(".modal-editStudent").classList.remove("show-modal");
+  document.querySelector(".modal-edit").classList.remove("show-modal");
+  document.querySelector(".darken-bg").classList.remove("darken-bg--visible");
+  studentEditForm.reset();
+});
 
-////////////////////////////////////////////////////////
+window.addEventListener("click", (e) => {
+  if (e.target.classList.contains("darken-bg--visible")) {
+    e.target.classList.remove("darken-bg--visible");
+    document.querySelector(".modal-class").classList.remove("show-modal");
+    document.querySelector(".modal-student").classList.remove("show-modal");
+  }
+});
 
-// TEST STUDENTI
-
-console.log(newStudent);
-
-// GETTER STUDENTI
-console.log(newStudent.id);
-
-////////////////////////////////////////////////////////
-
-// TEST CLASSI
-
-newClass.students = students;
-console.log(newClass);
-
-///////////////////////////////////////////////////////
-
-// TEST SCUOLA
-
-//////////////////////////////////////////////////////

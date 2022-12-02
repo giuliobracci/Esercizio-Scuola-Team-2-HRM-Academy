@@ -1,7 +1,18 @@
+import { Attribute } from './attribute.js';
+
 class School {
+    static #attributes = {
+        name: new Attribute('name', 'string', true),
+    };
+
     #name;
     #classes;
 
+    /**
+     * @constructor Constructs a School item
+     * @param {String} name School's name
+     * @param {SchoolClass[]} classes School's classes
+     */
     constructor(name, classes = []) {
         this.name = name;
         this.classes = classes;
@@ -14,24 +25,105 @@ class School {
     get classes() {
         return this.#classes;
     }
+    get attributes() {
+        return this.constructor.#attributes;
+    }
 
     set name(name) {
-        this.#name = name;
+        this.#name = Attribute.formatAndValidate(
+            name,
+            School.#attributes.name.type,
+            School.#attributes.name.required
+        );
     }
 
     set classes(classes) {
         this.#classes = classes;
     }
 
-    addStudent(student) {
-        this.students.push(student);
+    /**
+     * Adds a class to the School
+     * @param {SchoolClass} schoolClass SchoolClass to add to the School
+     */
+    addClass(schoolClass) {
+        if (!this.#classes.find(e => schoolClass.name === e.name)) {
+            this.#classes.push(schoolClass);
+        } else {
+            throw `SchoolClass ${schoolClass.name} already exists in ${
+                this.#name
+            }`;
+        }
     }
 
-    removeStudent(student) {
-        this.students = this.students.filter(e => student.id === e.id);
+    /**
+     * Adds a student to a school's class
+     * @param {String} schoolClass SchoolClass' name
+     * @param {Student} student Student to add to the schoolClass
+     */
+    addStudent(schoolClass, student) {
+        for (let classInSchool of this.#classes) {
+            if (classInSchool.name === schoolClass) {
+                if (!classInSchool.students.find(e => student.id === e.id)) {
+                    classInSchool.students.push(student);
+                } else {
+                    throw `Student ${student.name} ${student.surname} already exists in ${classInSchool.name}`;
+                }
+            }
+        }
     }
 
-    getStudent(student) {
-        return this.students.find(e => e.id === student.id);
+    /**
+     * Remove a student from a school's class
+     * @param {String} schoolClass SchoolClass' name
+     * @param {Student} student Student to remove from the schoolClass
+     */
+    removeStudent(schoolClass, student) {
+        for (let classInSchool of this.#classes) {
+            if (classInSchool.name === schoolClass) {
+                if (classInSchool.students.find(e => student === e.id)) {
+                    classInSchool.students = classInSchool.students.filter(
+                        e => student != e.id
+                    );
+                } else {
+                    throw `Student with id: ${student} doesn't exist in ${classInSchool.name}`;
+                }
+            }
+        }
+    }
+
+    /**
+     * Return the student of a school's class
+     * @param {String} schoolClass  SchoolClass' name
+     * @param {*} student Student to return
+     * @returns {Student}
+     */
+    getStudent(idStudent) {
+        let studentToReturn;
+        if(this.classes.length>0) {
+            for (let classInSchool of this.classes) {
+                for(let student of classInSchool.students) {
+                    if(student.id === idStudent){
+                        studentToReturn = student;
+                    }
+                }
+            }
+        }
+        return studentToReturn;
+    }
+
+    getStudentClass(idStudent) {
+        let className;
+        if(this.classes.length>0) {
+            for (let classInSchool of this.classes) {
+                for(let student of classInSchool.students) {
+                    if(student.id === idStudent){
+                        className=classInSchool.name;
+                    }
+                }
+            }
+        }
+        return className;
     }
 }
+
+export { School };
