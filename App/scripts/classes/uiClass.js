@@ -19,9 +19,9 @@ class UIClass {
         cardContainer,
         classButton,
         studentButton,
-        selectClass
+        selectClass,
+        editForm
     ) {
-    constructor(school,classForm,studentForm,cardContainer,classButton,studentButton,selectClass,editForm) {
         this.school = school;
         this.classForm = classForm;
         this.studentForm = studentForm;
@@ -51,6 +51,13 @@ class UIClass {
     get classFormSchoolClassName() {
         return this.classForm.ClassName.value;
     }
+    get school() {
+        return this.#school;
+    }
+
+    set school(school) {
+        this.#school = school;
+    }
 
     checkInputFieldStringValidity(element, value) {
         let result = false;
@@ -71,15 +78,6 @@ class UIClass {
         result === true
             ? element.classList.add(UIClass.#utilsClasses.error)
             : element.classList.remove(UIClass.#utilsClasses.error);
-    }
-
-    
-    get school() {
-        return this.#school;
-    }
-
-    set school(school) {
-        this.#school = school;
     }
 
     buttonAddClass() {
@@ -149,35 +147,53 @@ class UIClass {
         );
         newElement.appendTo(list);
     }
-}
-
-
     buttonsStudent(e) {
-        document.querySelector(".modal-edit").classList.toggle("show-modal");
-        document.querySelector("#removeStudent").setAttribute("name",e.target.id);
-        document.querySelector("#updateStudent").setAttribute("name",e.target.id);
-        document.querySelector("#changeClassStudent").setAttribute("name",e.target.id);
+        document.querySelector('.modal-edit').classList.toggle('show-modal');
+        document
+            .querySelector('#removeStudent')
+            .setAttribute('name', e.target.id);
+        document
+            .querySelector('#updateStudent')
+            .setAttribute('name', e.target.id);
+        document
+            .querySelector('#changeClassStudent')
+            .setAttribute('name', e.target.id);
     }
 
-    addNewElementToACard(nameClass,student) {
-        let list = $('#'+nameClass+'List');
-        let newElement = document.createElement("li");
-        newElement.setAttribute("id",student.id);
-        newElement.addEventListener("click",this.buttonsStudent);
-        newElement.innerHTML = 'Surname: ' + student.surname + '<br>' + 'Name: ' + student.name + '<br>' +'Age: ' + student.getAge();
+    addNewElementToACard(nameClass, student) {
+        let list = $('#' + nameClass + 'List');
+        let newElement = document.createElement('li');
+        newElement.setAttribute('id', student.id);
+        newElement.addEventListener('click', this.buttonsStudent);
+        newElement.innerHTML =
+            'Surname: ' +
+            student.surname +
+            '<br>' +
+            'Name: ' +
+            student.name +
+            '<br>' +
+            'Age: ' +
+            student.getAge();
         list.append(newElement);
     }
 
     removeStudent(e) {
-        $('#'+e.target.name+'').remove();
-        document.querySelector(".modal-edit").classList.remove("show-modal");
+        $('#' + e.target.name + '').remove();
+        document.querySelector('.modal-edit').classList.remove('show-modal');
     }
 
-    updateStudent(student){
-        $("#"+student.id).html('Surname: ' + student.surname + '<br>' + 'Name: ' + student.name + '<br>' +'Age: ' + student.getAge())
+    updateStudent(student) {
+        $('#' + student.id).html(
+            'Surname: ' +
+                student.surname +
+                '<br>' +
+                'Name: ' +
+                student.name +
+                '<br>' +
+                'Age: ' +
+                student.getAge()
+        );
     }
-
-    
 }
 
 export { UIClass };
