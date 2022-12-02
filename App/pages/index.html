@@ -107,11 +107,57 @@
 
         <div class="modal-edit">
           <div class="buttons">
-            <button>Remove Student</button>
-            <button>Update Student</button>
-            <button>Change Class</button>
+            <button id="removeStudent">Remove Student</button>
+            <button id="updateStudent">Update Student</button>
+            <button id="changeClassStudent">Change Class</button>
           </div>
         </div>
+
+        <div class="modal-editStudent">
+          <section class="form-section form-section-2">
+              <form
+                  class="form"
+                  id="studentEditForm"
+              >
+                  <label for=""
+                      >Name
+                  </label>
+                      <input
+                          type="text"
+                          required
+                          name="Name"
+                          minlength="2"
+                          maxlength="16"
+                          placeholder="Name..."
+                          id="editNameStudent"
+                      />
+                  <label for=""
+                      >Surname
+                  </label>
+                      <input
+                          type="text"
+                          required
+                          minlength="2"
+                          maxlength="16"
+                          name="Surname"
+                          placeholder="Surname..."
+                          id="editSurnameStudent"
+                      />
+                  <label for="birthday"
+                      >Birthday
+                  </label>
+                      <input
+                          type="date"
+                          name="BirthDay"
+                          required
+                          min="1950-01-01"
+                          id="editBirthdayStudent"
+                      />
+                  <button type="submit" class="buttonEditStudent">Edit Student</button>
+              </form>
+          </section>
+      </div>
+
 
         <section class="card-container">
             
