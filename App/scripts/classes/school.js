@@ -97,20 +97,32 @@ class School {
      * @param {*} student Student to return
      * @returns {Student}
      */
-    getStudent(schoolClass, student) {
+    getStudent(idStudent) {
         let studentToReturn;
-        for (let classInSchool of this.classes) {
-            if (classInSchool.name == schoolClass) {
-                if (classInSchool.students.find(e => student === e.id)) {
-                    studentToReturn = classInSchool.students.find(
-                        e => student === e.id
-                    );
-                } else {
-                    throw `Student with id: ${student} doesn't exist in ${classInSchool.name}`;
+        if(this.classes.length>0) {
+            for (let classInSchool of this.classes) {
+                for(let student of classInSchool.students) {
+                    if(student.id === idStudent){
+                        studentToReturn = student;
+                    }
                 }
             }
         }
         return studentToReturn;
+    }
+
+    getStudentClass(idStudent) {
+        let className;
+        if(this.classes.length>0) {
+            for (let classInSchool of this.classes) {
+                for(let student of classInSchool.students) {
+                    if(student.id === idStudent){
+                        className=classInSchool.name;
+                    }
+                }
+            }
+        }
+        return className;
     }
 }
 

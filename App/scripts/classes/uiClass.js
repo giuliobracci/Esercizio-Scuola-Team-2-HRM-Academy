@@ -12,7 +12,7 @@ class UIClass{
     #studentButton
     #selectClass
 
-    constructor(school,classForm,studentForm,cardContainer,classButton,studentButton,selectClass) {
+    constructor(school,classForm,studentForm,cardContainer,classButton,studentButton,selectClass,editForm) {
         this.school = school;
         this.classForm = classForm;
         this.studentForm = studentForm;
@@ -20,6 +20,15 @@ class UIClass{
         this.classButton = classButton;
         this.studentButton = studentButton;
         this.selectClass = selectClass;
+        this.editForm = editForm;
+    }
+    
+    get school() {
+        return this.#school;
+    }
+
+    set school(school) {
+        this.#school = school;
     }
 
     buttonAddClass() {
@@ -64,9 +73,10 @@ class UIClass{
     }
 
     buttonsStudent(e) {
-        
-        console.log(e.target)
         document.querySelector(".modal-edit").classList.toggle("show-modal");
+        document.querySelector("#removeStudent").setAttribute("name",e.target.id);
+        document.querySelector("#updateStudent").setAttribute("name",e.target.id);
+        document.querySelector("#changeClassStudent").setAttribute("name",e.target.id);
     }
 
     addNewElementToACard(nameClass,student) {
@@ -78,17 +88,13 @@ class UIClass{
         list.append(newElement);
     }
 
-    removeStudent(nameClass,student) {
-        this.school.removeStudent(nameClass,student);
-        this.removeElementFromACard(student);
+    removeStudent(e) {
+        $('#'+e.target.name+'').remove();
+        document.querySelector(".modal-edit").classList.remove("show-modal");
     }
 
-    removeElementFromACard(student) {
-        $('"#'+student+'"').remove();
-    }
-
-    updateStudent(nameClass,student){
-
+    updateStudent(student){
+        $("#"+student.id).html('Surname: ' + student.surname + '<br>' + 'Name: ' + student.name + '<br>' +'Age: ' + student.getAge())
     }
 
     
