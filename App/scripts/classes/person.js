@@ -43,8 +43,8 @@ class Person {
     }
 
     set name(newName) {
-        this.#name = Attribute.capitalize(
-            Attribute.checkOnlyCharacters(
+        this.#name = Attribute.checkOnlyCharacters(
+            Attribute.capitalize(
                 Attribute.formatAndValidate(
                     newName,
                     Person.#attributes.name.type,
@@ -55,8 +55,8 @@ class Person {
     }
 
     set surname(newSurname) {
-        this.#surname = Attribute.capitalize(
-            Attribute.checkOnlyCharacters(
+        this.#surname = Attribute.checkOnlyCharacters(
+            Attribute.capitalize(
                 Attribute.formatAndValidate(
                     newSurname,
                     Person.#attributes.name.type,

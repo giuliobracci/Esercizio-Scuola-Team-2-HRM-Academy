@@ -100,7 +100,9 @@ class Attribute {
 
     static checkOnlyCharacters(string) {
         let stringErrorNumbers = 'Expect only alphabetic characters';
-        let onlyCharacters = /^[a-zA-Z]$/;
+        let onlyCharacters = /^[a-zA-Z]{2,16}$/;
+        console.log(string);
+        console.log(onlyCharacters.test(string));
         if (!onlyCharacters.test(string)) {
             alert(stringErrorNumbers);
             throw new TypeError(stringErrorNumbers);
