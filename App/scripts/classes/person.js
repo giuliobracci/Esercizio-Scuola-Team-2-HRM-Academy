@@ -44,20 +44,24 @@ class Person {
 
     set name(newName) {
         this.#name = Attribute.capitalize(
-            Attribute.formatAndValidate(
-                newName,
-                Person.#attributes.name.type,
-                Person.#attributes.name.required
+            Attribute.checkOnlyCharacters(
+                Attribute.formatAndValidate(
+                    newName,
+                    Person.#attributes.name.type,
+                    Person.#attributes.name.required
+                )
             )
         );
     }
 
     set surname(newSurname) {
         this.#surname = Attribute.capitalize(
-            Attribute.formatAndValidate(
-                newSurname,
-                Person.#attributes.name.type,
-                Person.#attributes.name.required
+            Attribute.checkOnlyCharacters(
+                Attribute.formatAndValidate(
+                    newSurname,
+                    Person.#attributes.name.type,
+                    Person.#attributes.name.required
+                )
             )
         );
     }

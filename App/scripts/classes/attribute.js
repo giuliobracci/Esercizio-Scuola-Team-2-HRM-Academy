@@ -47,6 +47,8 @@ class Attribute {
                 switch (type) {
                     case 'string':
                         if (!typeof value === 'string') {
+                            let stringError = 'Expected a string';
+                            alert(stringError);
                             throw new TypeError('Expected a string');
                         }
                         value = value.trim();
@@ -65,18 +67,20 @@ class Attribute {
                     case 'date':
                         let dateRegEx = /^[0-9]{2,4}\/[0-9]{2}\/[0-9]{2,4}$/;
                         if (!dateRegEx.test(value)) {
-                            throw new TypeError(
-                                'Date formats accepted: DD/MM/YYYY, DD/MM/YY, YYYY/MM/DD, YY/MM/DD'
-                            );
+                            let dateError =
+                                'Date formats accepted: DD/MM/YYYY, DD/MM/YY, YYYY/MM/DD, YY/MM/DD';
+                            alert(dateError);
+                            throw new TypeError(dateError);
                         }
                         break;
 
                     case 'class':
                         let schoolClassRegEx = /^[0-9]{1}[A-Z]{1}$/;
                         if (!schoolClassRegEx.test(value)) {
-                            throw new TypeError(
-                                'Class must be a number+a-z letter'
-                            );
+                            let schoolClassError =
+                                'Class must be a number+a-z letter';
+                            alert(schoolClassError);
+                            throw new TypeError(schoolClassError);
                         }
                         break;
                 }
@@ -92,6 +96,15 @@ class Attribute {
         return `${trimmedString[0].toUpperCase()}${trimmedString
             .slice(1)
             .toLowerCase()}`;
+    }
+
+    static checkOnlyCharacters(string) {
+        let stringErrorNumbers = 'Expect only alphabetic characters';
+        let onlyCharacters = /^[a-zA-Z]$/;
+        if (!onlyCharacters.test(string)) {
+            alert(stringErrorNumbers);
+            throw new TypeError(stringErrorNumbers);
+        }
     }
 
     static formatAllCaps(string) {

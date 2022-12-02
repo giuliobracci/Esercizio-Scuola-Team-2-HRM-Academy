@@ -1,17 +1,17 @@
-@use "./modules/header";
-@use "./modules/form";
-@use "./modules/card";
-@use "./modules/modal";
-@use "./modules/shadow";
-
+@use './modules/header';
+@use './modules/form';
+@use './modules/card';
+@use './modules/modal';
+@use './modules/shadow';
+@use './modules//utilities';
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-  height: 100vh;
+    height: 100vh;
 }

@@ -56,5 +56,24 @@ window.addEventListener('click', e => {
     }
 });
 
-console.log(classForm.className);
-console.log(studentForm);
+/// GIULIO ADDS
+studentForm.Name.addEventListener('input', () => {
+    uiObj.checkInputFieldStringValidity(
+        studentForm.Name,
+        uiObj.studentFormName
+    );
+});
+
+studentForm.Surname.addEventListener('input', () => {
+    uiObj.checkInputFieldStringValidity(
+        studentForm.Surname,
+        uiObj.studentFormSurname
+    );
+});
+
+classForm.ClassName.addEventListener('input', () => {
+    uiObj.checkInputFieldSchoolClassValidity(
+        classForm.ClassName,
+        uiObj.classFormSchoolClassName
+    );
+});
