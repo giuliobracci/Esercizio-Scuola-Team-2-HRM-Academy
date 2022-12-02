@@ -142,12 +142,12 @@ header .buttonContainer .addStudent:hover {
   text-align: center;
   cursor: pointer;
 }
-.card-container .card ul li:nth-child(odd) {
+/* .card-container .card ul li:nth-child(odd) {
   color: #777;
 }
 .card-container .card ul li:nth-child(even) {
   color: rgba(44, 44, 168, 0.767);
-}
+} */
 
 @media (max-width: 1150px) {
   .card-container {
