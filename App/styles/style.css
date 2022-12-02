@@ -47,7 +47,12 @@ header .buttonContainer .addStudent {
   }
   header .buttonContainer .addClass,
 header .buttonContainer .addStudent {
-    padding: 8px 0;
+    padding: 8px 20px;
+  }
+  header .buttonContainer .addClass:hover,
+header .buttonContainer .addStudent:hover {
+    padding: 10px 22px;
+    margin: -2px;
   }
 }
 .form-section {
