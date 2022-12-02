@@ -4,7 +4,7 @@ import { UIClass } from "../classes/uiClass.js";
 $(document).ready(function(){
     let uiObj = start();
     console.log(uiObj.classForm)
-    uiObj.addNewClass();
+    //uiObj.addNewClass();
     $("#addClassForm").click(function(){alert(uiObj.classForm)})
 })
 
