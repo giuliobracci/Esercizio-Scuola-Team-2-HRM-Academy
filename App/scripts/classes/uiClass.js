@@ -1,4 +1,4 @@
-import { getRandomId } from "../util/utilis";
+import { getRandomId } from "../util/utilis.js";
 
 class UIClass{
     #school;
@@ -13,8 +13,9 @@ class UIClass{
         this.cardContainer = cardContainer;
     }
 
+    
     addNewClass() {
-        let obj = {}
+        let obj = {};
         for (const elem of Object.values(this.#classForm)) {
             if (elem.type != 'submit') {
                 obj[elem.id] = elem.value
@@ -37,7 +38,7 @@ class UIClass{
     }
 
     addNewCard(nameClass) {
-        let newElement  = $('<article class="card-container" id='+nameClass+'></article>');
+        let newElement  = $('<article class="card" id='+nameClass+'></article>');
         let idList = nameClass+"List";
         let list  = $('<ul id='+idList+'></ul>');
         list.appendTo(newElement);
