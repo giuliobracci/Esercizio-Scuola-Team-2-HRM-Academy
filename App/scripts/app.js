@@ -1,13 +1,13 @@
-import { Attribute } from "./classes/attribute.js";
-import { Person } from "./classes/person.js";
-import { Student } from "./classes/student.js";
-import { getRandomId } from "../scripts/util/utilis.js";
-import { SchoolClass } from "../scripts/classes/schoolClass.js";
-import { School } from "../scripts/classes/school.js";
-import { addClass, addStudent } from "../scripts/util/buttonScript.js";
+import { Attribute } from './classes/attribute.js';
+import { Person } from './classes/person.js';
+import { Student } from './classes/student.js';
+import { getRandomId } from '../scripts/util/utilis.js';
+import { SchoolClass } from '../scripts/classes/schoolClass.js';
+import { School } from '../scripts/classes/school.js';
+import { addClass, addStudent } from '../scripts/util/buttonScript.js';
 
-document.querySelector(".addClass").addEventListener("click", addClass);
-document.querySelector(".addStudent").addEventListener("click", addStudent);
+document.querySelector('.addClass').addEventListener('click', addClass);
+document.querySelector('.addStudent').addEventListener('click', addStudent);
 
 window.addEventListener("click", (e) => {
   if (e.target.classList.contains("darken-bg--visible")) {
@@ -19,7 +19,21 @@ window.addEventListener("click", (e) => {
 
 
 
+
 // ////////////////// TESTING - NOT REAL CODE /////////////
+
+let students = [];
+let newAttribute = new Attribute('Name', 'string', true);
+let newPerson = new Person('Luca', 'Rampini', '1980/01/02');
+let newStudent = new Student('Paolo', 'Ferrante', '1982/02/02', getRandomId());
+let newClass = new SchoolClass('5A', 14, students);
+let classes = [];
+classes.push(newClass);
+let newSchool = new School('Liceo Mario', classes);
+
+students.push(newStudent);
+students.push(new Student('Daniela', 'Ferrante', '1970/03/01', getRandomId()));
+
 
 // let students = [];
 // let newAttribute = new Attribute("Name", "string", true);
@@ -65,6 +79,7 @@ window.addEventListener("click", (e) => {
 // newClass.students = students;
 // console.log(newClass);
 
+
 // ///////////////////////////////////////////////////////
 
 // // TEST SCUOLA
@@ -74,6 +89,28 @@ window.addEventListener("click", (e) => {
 // const student4 = new Student("Mirco", "Vucinic", "2020/02/02", getRandomId());
 // newSchool.addStudent(1, student4);
 // console.log("Inserendo Mirco");
+=======
+//////////////////////////////////////////////////////
+
+console.log(newSchool);
+const student4 = new Student('Mirco', 'Vucinic', '2020/02/02', getRandomId());
+newSchool.addStudent(1, student4);
+console.log('Inserendo Mirco');
+console.log(newSchool);
+// console.log("oooooooooooooooooooooooooooooooooooooo");
+// newSchool.addStudent(1,student4);
+// console.log("Inserendo Mirco due volte")
+// console.log(newSchool);
+// console.log("oooooooooooooooooooooooooooooooooooooo");
+console.log('Cercando Mirco');
+console.log(newSchool.getStudent(1, student4));
+newSchool.removeStudent(1, student4);
+console.log('Rimuovendo Mirco');
+console.log(newSchool);
+// console.log("oooooooooooooooooooooooooooooooooooooo");
+// newSchool.removeStudent(1,student4);
+// console.log("Rimuovendo Mirco");
+
 // console.log(newSchool);
 // // console.log("oooooooooooooooooooooooooooooooooooooo");
 // // newSchool.addStudent(1,student4);
@@ -81,6 +118,7 @@ window.addEventListener("click", (e) => {
 // // console.log(newSchool);
 // // console.log("oooooooooooooooooooooooooooooooooooooo");
 // console.log("Cercando Mirco");
+
 // console.log(newSchool.getStudent(1, student4));
 // newSchool.removeStudent(1, student4);
 // console.log("Rimuovendo Mirco");
@@ -101,3 +139,14 @@ window.addEventListener("click", (e) => {
 // console.log(newSchool);
 // newSchool.addClass(classProva2);
 // console.log(newSchool);
+=======
+// console.log(newSchool.getStudent(1,student4));
+// console.log("oooooooooooooooooooooooooooooooooooooo");
+console.log('----------------------------------------');
+let classProva1 = new SchoolClass('2A', 14);
+let classProva2 = new SchoolClass('2A', 14);
+newSchool.addClass(classProva1);
+console.log(newSchool);
+newSchool.addClass(classProva2);
+console.log(newSchool);
+
