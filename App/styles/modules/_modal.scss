@@ -15,6 +15,41 @@
   z-index: 999;
 }
 
+.modal-edit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background-color: yellow;
+  border: 2px solid #7ac86a;
+  border-radius: 10px;
+  padding: 4px;
+  text-align: center;
+  display: none;
+  align-items: center;
+  z-index: 999;
+  justify-content: center;
+  flex-direction: column;
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    button {
+      padding: 14px 16px;
+      background-color: #7ac86a;
+      border-radius: 5%;
+      transition: all 0.1s ease-in-out;
+      &:hover {
+        cursor: pointer;
+        padding: 16px 18px;
+        margin: -2px;
+      }
+    }
+  }
+}
+
 .modal-student {
   position: absolute;
   top: 50%;

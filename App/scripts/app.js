@@ -13,12 +13,14 @@ const studentForm = $('#studentForm')[0];
 const cardContainer = $('.card-container');
 const buttonClass = $('.addClass');
 const buttonStudent = $('.addStudent');
-let uiObj = new UIClass(school,classForm,studentForm,cardContainer,buttonClass,buttonStudent);
+const selectClass = $('#classStudent');
+let uiObj = new UIClass(school,classForm,studentForm,cardContainer,buttonClass,buttonStudent,selectClass);
 
 $('#nameSchool').text(school.name);
 
 document.querySelector('.addClass').addEventListener('click', uiObj.buttonAddClass);
 document.querySelector('.addStudent').addEventListener('click', uiObj.buttonAddStudent);
+
 classForm.addEventListener('submit',e => {
   e.preventDefault();
   uiObj.addNewClass();

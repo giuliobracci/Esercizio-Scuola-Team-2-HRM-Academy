@@ -10,14 +10,16 @@ class UIClass{
     #cardContainer
     #classButton
     #studentButton
+    #selectClass
 
-    constructor(school,classForm,studentForm,cardContainer,classButton,studentButton) {
+    constructor(school,classForm,studentForm,cardContainer,classButton,studentButton,selectClass) {
         this.school = school;
         this.classForm = classForm;
         this.studentForm = studentForm;
         this.cardContainer = cardContainer;
         this.classButton = classButton;
         this.studentButton = studentButton;
+        this.selectClass = selectClass;
     }
 
     buttonAddClass() {
@@ -33,17 +35,18 @@ class UIClass{
     }
     
     addNewClass() {
-        const nameClass = $("#nameClass").val();
-        const ageRequired = $("#ageRequired").val();
+        const nameClass = this.classForm.ClassName.value;
+        const ageRequired = this.classForm.AgeRequired.value;
         this.school.addClass(new SchoolClass(nameClass,ageRequired));
+        this.selectClass.append('<option value='+nameClass+'>'+nameClass+'</option>');
         this.addNewCard(nameClass);
     }
 
     addNewStudent() {
-        const name = $('#nameStudent').val();
-        const surname = $('#surnameStudent').val();
-        let birthday = $('#birthdayStudent').val();
-        const nameClass = $('#classStudent').val();
+        const name = this.studentForm.Name.value;
+        const surname = this.studentForm.Surname.value;
+        let birthday = this.studentForm.BirthDay.value;
+        const nameClass = this.studentForm.SchoolClass.value;
         birthday = birthday.replaceAll('-','/');
         let student = new Student(name,surname,birthday,getRandomId());
         this.school.addStudent(nameClass,student);
@@ -60,14 +63,35 @@ class UIClass{
         newElement.appendTo(this.cardContainer);
     }
 
+    buttonsStudent(e) {
+        
+        console.log(e.target)
+        document.querySelector(".modal-edit").classList.toggle("show-modal");
+    }
+
     addNewElementToACard(nameClass,student) {
         let list = $('#'+nameClass+'List');
-        let newElement  = $('<li id='+student.id+'>'+
-            'Surname: ' + student.surname + '<br>' +
-            'Name: ' + student.name + '<br>' +
-            'Age: ' + student.getAge() + '</li>');
-        newElement.appendTo(list);
+        let newElement = document.createElement("li");
+        newElement.setAttribute("id",student.id);
+        newElement.addEventListener("click",this.buttonsStudent);
+        newElement.innerHTML = 'Surname: ' + student.surname + '<br>' + 'Name: ' + student.name + '<br>' +'Age: ' + student.getAge();
+        list.append(newElement);
     }
+
+    removeStudent(nameClass,student) {
+        this.school.removeStudent(nameClass,student);
+        this.removeElementFromACard(student);
+    }
+
+    removeElementFromACard(student) {
+        $('"#'+student+'"').remove();
+    }
+
+    updateStudent(nameClass,student){
+
+    }
+
+    
 }
 
 export { UIClass };
