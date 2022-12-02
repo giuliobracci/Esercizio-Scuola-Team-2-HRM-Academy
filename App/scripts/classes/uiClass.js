@@ -12,7 +12,7 @@ class UIClass{
     #studentButton
     #selectClass
 
-    constructor(school,classForm,studentForm,cardContainer,classButton,studentButton,selectClass) {
+    constructor(school,classForm,studentForm,cardContainer,classButton,studentButton,selectClass,editForm) {
         this.school = school;
         this.classForm = classForm;
         this.studentForm = studentForm;
@@ -20,6 +20,7 @@ class UIClass{
         this.classButton = classButton;
         this.studentButton = studentButton;
         this.selectClass = selectClass;
+        this.editForm = editForm;
     }
     
     get school() {
@@ -92,8 +93,8 @@ class UIClass{
         document.querySelector(".modal-edit").classList.remove("show-modal");
     }
 
-    updateStudent(e){
-        
+    updateStudent(student){
+        $("#"+student.id).html('Surname: ' + student.surname + '<br>' + 'Name: ' + student.name + '<br>' +'Age: ' + student.getAge())
     }
 
     
