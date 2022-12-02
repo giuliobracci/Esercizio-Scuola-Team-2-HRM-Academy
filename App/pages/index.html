@@ -34,6 +34,7 @@
                 <form class="form1" id="classForm">
                     <label for=""
                         >Class Name
+                    </label>
                         <input
                             type="text"
                             required
@@ -43,18 +44,19 @@
                             id="nameClass"
                             placeholder="Name: (Example: 5A)"
                         />
-                    </label>
+                    
                     <label for=""
                         >Age Required
+                    </label>
                         <input
                             type="number"
                             required
+                            name="AgeRequired"
                             min="13"
                             max="60"
                             id="ageRequired"
                             placeholder="Age required"
                         />
-                    </label>
                     <button type="submit" id="addClassForm">
                         Add New Class
                     </button>
@@ -66,50 +68,50 @@
                 <form class="form" id="studentForm">
                     <label for=""
                         >Name
+                    </label>
                         <input
                             type="text"
                             required
-                            name="name"
+                            name="Name"
                             minlength="2"
                             maxlength="16"
                             placeholder="Name..."
                             id="nameStudent"
                         />
-                    </label>
                     <label for=""
                         >Surname
+                    </label>
                         <input
                             type="text"
                             required
                             minlength="2"
                             maxlength="16"
-                            name="surname"
+                            name="Surname"
                             placeholder="Surname..."
                             id="surnameStudent"
                         />
-                    </label>
                     <label for="birthday"
                         >Birthday
+                    </label>
                         <input
                             type="date"
-                            name="Birth Day"
+                            name="BirthDay"
                             required
                             min="1950-01-01"
                             id="birthdayStudent"
                         />
-                    </label>
-                    <label for=""
+                    <label for="SchoolClass"
                         >Class
-                        <input
-                            type="text"
+                    </label>
+                        <select
                             required
-                            name="School Class"
+                            name="SchoolClass"
                             minlength="2"
                             maxlength="2"
                             placeholder="Class..."
                             id="classStudent"
-                        />
-                    </label>
+                        >
+                        </select>
                     <button type="submit">Add Student</button>
                 </form>
             </section>

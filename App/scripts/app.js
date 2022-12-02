@@ -13,13 +13,15 @@ const studentForm = $('#studentForm')[0];
 const cardContainer = $('.card-container');
 const buttonClass = $('.addClass');
 const buttonStudent = $('.addStudent');
+const selectClass = $('#classStudent');
 let uiObj = new UIClass(
     school,
     classForm,
     studentForm,
     cardContainer,
     buttonClass,
-    buttonStudent
+    buttonStudent,
+    selectClass
 );
 
 $('#nameSchool').text(school.name);
